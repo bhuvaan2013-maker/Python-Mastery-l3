@@ -1,21 +1,21 @@
 class BankAccount: 
-    def __init__(self,ah,an,b):
-        self.account_holder=ah
-        self.account_number=an
-        self.balance=b
+    def __init__(self,holder,number,balance):
+        self.account_holder=holder
+        self.account_number=number
+        self.balance=balance
     def set_account_holder(self,name):
         if name=="":
-            return None
+            print("Invalid name")
         else:
             self.account_holder=name
-    def set_account_number(self,number):
-        if number<1:
-            return None
-        else:
+    def set_account_number(self,number:str):
+        if len(number) == 6 and number[:3] == "ACC":
             self.account_number=number
+        else:
+            print("Invalid account number")
     def set_balance(self,amount):
         if amount<1:
-            return None
+            print("Invalid balance")
         else:
             self.balance=amount
     def get_account_holder(self):
@@ -26,12 +26,12 @@ class BankAccount:
         return self.balance
     def deposit(self,amount):
         if amount<1:
-            return None
+            print("Invalid amount")
         else:
             self.balance=self.balance+amount
     def withdraw(self,amount):
-        if amount>self.balance:
-            return None
+        if amount>self.balance or amount<1:
+            print("invalid amount")
         else:
             self.balance=self.balance-amount
     def display_account_details(self):
@@ -45,6 +45,6 @@ account.deposit(2000)
 print(account.get_balance())# 7000
 account.withdraw(1500)
 print(account.get_balance())# 5500
-account.set_account_holder("Rahul Sharma")
+account.set_account_number("ACC676")
 account.display_account_details()
     
