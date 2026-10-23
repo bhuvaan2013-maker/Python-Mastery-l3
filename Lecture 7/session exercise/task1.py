@@ -9,7 +9,7 @@ class BankAccount:
         else:
             self.account_holder=name
     def set_account_number(self,number:str):
-        if len(number) == 6 and number[:3] == "ACC":
+        if len(number)==6 and number[:3]=="ACC":
             self.account_number=number
         else:
             print("Invalid account number")
